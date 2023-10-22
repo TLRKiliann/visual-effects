@@ -1,74 +1,209 @@
-@keyframes frontbg {
+@mixin opacity-bg($opacity, $bg-color) {
+  opacity: $opacity;
+  background-color: $bg-color;
+}
+
+@keyframes front-bg {
+  0% {
+    @include opacity-bg(1, #222);
+  } 
+  70% {
+    @include opacity-bg(1, #222);
+  }
+  100% {
+    @include opacity-bg(0, #222);
+  }
+}
+@keyframes header-bg {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes eyes-effect {
   0% {
     opacity: 1;
-  } 
+  }
+  99% {
+    opacity: 1;
+  }
   100% {
     opacity: 0;
   }
 }
 
-@keyframes backbg {
+@keyframes eyes-hut {
   0% {
-    opacity: 0;
-  } 
+    opacity: 1;
+  }
   100% {
     opacity: 1;
   }
+}
+
+@keyframes external-smile {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+}
+
+@mixin anim($bg, $delay, $duration, $itercount) {
+  animation: $bg;
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-iteration-count: $itercount;
+}
+
+@mixin width-height($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin display($display, $position, $content) {
+  display: $display;
+  align-items: $position;
+  justify-content: $content;
+}
+
+@mixin bg-shadow($bg-color, $shadow) {
+  background-color: $bg-color;
+  box-shadow: $shadow;
+}
+
+@mixin position-abs-fix($abs-fix, $top, $right, $bottom, $left) {
+  position: $abs-fix;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin anim-eyes($opacity, $name, $delay, $duration, $iteration, $timing, $translate) {
+  opacity: $opacity;
+  animation-name: $name;
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-iteration-count: $iteration;
+  animation-timing-function: $timing;
+  transform: $translate;  
 }
 
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  animation: backbg 3s ease-in-out 0s 1;
   .container {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    height: 100vh;
+    @include position-abs-fix(absolute, 0px, 0px, 0px, 0px);
     background: #222;
+    
     opacity: 0;
-    animation: frontbg 3s ease-in-out 0s 1;
+    @include anim(front-bg, 0s, 4s, 1);
+
     z-index: 10;
     .box {
       display: flex;
       justify-content: space-around;
-      width: auto;
+      height: 40%;
       .square {
-        width: 100px;
-        height: 100px;
+        display: flex;
+        @include width-height(80px, 80px);
         background-color: #44ff00;
+        border-radius: 3px;
+        opacity: 0;
+        @include anim(eyes-effect, 0s, 3s, 1);
+        .span--eyescircle {
+          @include display(flex, center, center);
+          @include width-height(80px, 80px);
+          margin: auto;
+          font-size: 3rem;
+          font-weight: 400;
+          opacity: 0;
+          @include anim(eyes-effect, 1s, 3s, 1);
+        }
+        .span--hut {
+          position: absolute;
+          display: flex;
+          background-color: #242424;
+          @include width-height(80px, 80px);
+          /*border: 1px solid violet;*/
+
+          opacity: 0;
+          @include anim(eyes-hut, 2s, 3s, 1);
+
+          z-index: 20;      
+          .span--eyeshut {
+            background-color: #44ff00;
+            
+          }
+      
+          .hut--one {
+            position: absolute;
+            bottom: 0px;
+            left: -20px;
+            @include width-height(40px, 40px);
+          }
+      
+          .hut--two {
+            position: absolute;
+            top: 0px;
+            left: 20px;
+            @include width-height(40px, 40px);
+          }
+      
+          .hut--three {
+            position: absolute;
+            bottom: 0px;
+            right: -20px;
+            @include width-height(40px, 40px);
+          }
+        }
       }
       .square--1 {
-        margin-top: 10%;
+        margin-top: 14%;
         margin-left: 10%;
       }
       .square--2 {
-        margin-top: 10%;
+        margin-top: 14%;
         margin-right: 10%;
       }
     }
     .smile {
-      display: flex;
-      justify-content: center;
-      font-size: 10rem;
-      margin-top: 100px;
+      @include display(flex, center, center);
+      font-size: 22rem;
       color: #44ff00;
+      @include width-height(100%, 300px);
+      margin: auto;
+      margin-top: 3%;
+      .span--smile {
+        @include width-height(40px, 40px);       
+        background-color: #44ff00;
+      }
+      .external--smile {
+        @include anim-eyes(1, external-smile, 2s, 2s, 1, ease-in-out, translateY(0px));
+      }
     }
   }
   .span--img {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
+    @include position-abs-fix(fixed, 0px, 0px, 0px, 0px);
     filter: opacity(80%);
     z-index: -1;
     img {
-      width: 100%;
-      height: 100%;
+      @include width-height(100%, 100%);
       margin: auto;
       opacity: 0.2;
       object-fit: cover;
@@ -79,11 +214,11 @@ body {
     top: 0px;
     right: 0px;
     left: 0px;
-    width: 100%;
-    height: 60px;
-    background-color: #216e83;
-    box-shadow: 0px 0px 7px #999;
+    @include width-height(100%, 60px);
+    @include bg-shadow(#216e83, 0px 0px 7px #999);
     color: #f5f5f5;
+    opacity: 1;
+    @include anim(header-bg, 0s, 5s, 1);
     z-index: 15;
     nav {
       width: 100%;
@@ -92,14 +227,13 @@ body {
       margin: auto;
       ul {
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: right;
+        @include display(flex, center, right);
         list-style: none;
         li {
           display: flex;
           margin: auto 20px;
           a {
+            position: relative;
             text-decoration: none;
             font-size: 1.4rem;
             margin: 10px 20px;
@@ -117,10 +251,9 @@ body {
   }
   main {
     position: relative;
-    width: 100%;
-    height: calc(100vh - 50px);
     display: flex;
     flex-direction: column;
+    @include width-height(100%, calc(100vh - 50px));
     background-color: #222;
     z-index: -10;
     .section--1 {
@@ -136,8 +269,7 @@ body {
       width: 600px;
       margin-left: 46%;
       display: flex;
-      background-color: #ccc;
-      box-shadow: 0px 0px 10px #777;
+      @include bg-shadow(#ccc, 0px 0px 10px #777);
       border-radius: 7px;
       padding: 20px;
       article {
@@ -164,13 +296,9 @@ body {
     right: 0px;
     bottom: 0px;
     left: 0px;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #216e83;
-    box-shadow: 0px 0px 7px #777;
+    @include width-height(100%, 50px);
+    @include display(flex, center, center);
+    @include bg-shadow(#216e83, 0px 0px 7px #777);
     color: #f5f5f5;
   }
 }
