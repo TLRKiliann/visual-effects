@@ -8,24 +8,37 @@ function App() {
       <div className="container">
         <div className='box'>
           <div className='square square--1'>
+            
             <span className='span--eyescircle'>O</span>
 
             <div className='span--hut'>
-              <span className='span--eyeshut hut--one'>^</span>
-              <span className='span--eyeshut hut--two'>^</span>
-              <span className='span--eyeshut hut--three'>^</span>
+              <span className='span--eyeshut hut--one'></span>
+              <span className='span--eyeshut hut--two'></span>
+              <span className='span--eyeshut hut--three'></span>
             </div>
 
           </div>
 
           <div className='square square--2'>
+            
             <span className='span--eyescircle'>O</span>
+            
+            <div className='span--hut'>
+              <span className='span--eyeshut hut--one'></span>
+              <span className='span--eyeshut hut--two'></span>
+              <span className='span--eyeshut hut--three'></span>
+            </div>
+
           </div>
         </div>
         <div className='smile'>
+          
+          <span className='span--smile external--smile'></span>
           <span className='span--smile'></span>
           <span className='span--smile'></span>
           <span className='span--smile'></span>
+          <span className='span--smile external--smile'></span>
+
         </div>
       </div>
       <span className='span--img'>
