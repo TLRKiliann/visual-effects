@@ -1,15 +1,12 @@
 @keyframes front-bg {
   0% {
-    opacity: 1;
-    background: #222;
+    @include opacity-bg(1, #222);
   } 
   70% {
-    opacity: 1;
-    background: #222;
+    @include opacity-bg(1, #222);
   }
   100% {
-    opacity: 0;
-    background: #222;
+    @include opacity-bg(0, #222);
   }
 }
 @keyframes header-bg {
@@ -45,6 +42,11 @@
   }
 }
 
+@mixin opacity-bg($opacity, $background) {
+  opacity: $opacity;
+  background: $background;
+}
+
 @mixin anim($bg, $delay, $duration, $itercount) {
   animation: $bg;
   animation-delay: $delay;
@@ -68,16 +70,20 @@
   box-shadow: $shadow;
 }
 
+@mixin position-abs-fix($abs-fix, $top, $right, $bottom, $left) {
+  position: $abs-fix;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   .container {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
+    @include position-abs-fix(absolute, 0px, 0px, 0px, 0px);
     background: #222;
     opacity: 1;
     @include anim(front-bg, 0s, 5s, 1);
@@ -157,11 +163,7 @@ body {
     }
   }
   .span--img {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
+    @include position-abs-fix(fixed, 0px, 0px, 0px, 0px);
     filter: opacity(80%);
     z-index: -1;
     img {
@@ -189,9 +191,7 @@ body {
       margin: auto;
       ul {
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: right;
+        @include display(flex, center, right);
         list-style: none;
         li {
           display: flex;
