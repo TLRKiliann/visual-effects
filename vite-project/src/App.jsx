@@ -33,11 +33,11 @@ function App() {
         </div>
         <div className='smile'>
           
-          <span className='span--smile external--smile'></span>
+          <span className='span--smile external--square--smile'></span>
+          <span className='span--smile middle--square--smile'></span>
           <span className='span--smile'></span>
-          <span className='span--smile'></span>
-          <span className='span--smile'></span>
-          <span className='span--smile external--smile'></span>
+          <span className='span--smile middle--square--smile'></span>
+          <span className='span--smile external--square--smile'></span>
 
         </div>
       </div>

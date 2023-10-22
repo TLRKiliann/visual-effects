@@ -1,3 +1,15 @@
+$dark--16: #161616;
+$dark--22: #222;
+$dark--24: #242424;
+$grey--77: #777;
+$white-smoke: #f5f5f5;
+$grey--cc: #ccc;
+$light-sandybrown: #ffdead;
+$sandybrown: #ffa500;
+$light-green: #44ff00;
+$dark-grayish-blue: #5b6773;
+$dark-cyan: #336699;
+
 @mixin opacity-bg($opacity, $bg-color) {
   opacity: $opacity;
   background-color: $bg-color;
@@ -5,13 +17,13 @@
 
 @keyframes front-bg {
   0% {
-    @include opacity-bg(1, #222);
+    @include opacity-bg(1, $dark--22);
   } 
   70% {
-    @include opacity-bg(1, #222);
+    @include opacity-bg(1, $dark--22);
   }
   100% {
-    @include opacity-bg(0, #222);
+    @include opacity-bg(0, $dark--22);
   }
 }
 @keyframes header-bg {
@@ -62,6 +74,21 @@
   }
 }
 
+@keyframes middle-smile {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+}
+
 @mixin anim($bg, $delay, $duration, $itercount) {
   animation: $bg;
   animation-delay: $delay;
@@ -74,9 +101,9 @@
   height: $height;
 }
 
-@mixin display($display, $position, $content) {
+@mixin display($display, $align, $content) {
   display: $display;
-  align-items: $position;
+  align-items: $align;
   justify-content: $content;
 }
 
@@ -93,14 +120,38 @@
   left: $left;
 }
 
-@mixin anim-eyes($opacity, $name, $delay, $duration, $iteration, $timing, $translate) {
-  opacity: $opacity;
+@mixin anim-eyes($name) {
+  opacity: 1;
   animation-name: $name;
-  animation-delay: $delay;
-  animation-duration: $duration;
-  animation-iteration-count: $iteration;
-  animation-timing-function: $timing;
-  transform: $translate;  
+  animation-delay: 2s;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  transform: translateY(0px);  
+}
+
+@mixin hut-position($top-or-bottom, $left-or-right, $px) {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  #{$top-or-bottom}: 0px;
+  #{$left-or-right}: $px;
+}
+
+@mixin square-margin($margin-left-or-right) {
+  margin-top: 14%;
+  #{$margin-left-or-right}: 10%;
+}
+
+@mixin absolute-top-or-bottom-rl($top-or-bottom, $height) {
+  position: absolute;
+  #{$top-or-bottom}: 0px;
+  right: 0px;
+  left: 0px;
+  width: 100%;
+  height: $height;
+  background-color: $dark-cyan; 
+  box-shadow: 0px 0px 7px $grey--77;
 }
 
 body {
@@ -109,11 +160,9 @@ body {
   box-sizing: border-box;
   .container {
     @include position-abs-fix(absolute, 0px, 0px, 0px, 0px);
-    background: #222;
-    
+    background: $dark--16;
     opacity: 0;
     @include anim(front-bg, 0s, 4s, 1);
-
     z-index: 10;
     .box {
       display: flex;
@@ -122,7 +171,7 @@ body {
       .square {
         display: flex;
         @include width-height(80px, 80px);
-        background-color: #44ff00;
+        background-color: $light-green;
         border-radius: 3px;
         opacity: 0;
         @include anim(eyes-effect, 0s, 3s, 1);
@@ -132,69 +181,55 @@ body {
           margin: auto;
           font-size: 3rem;
           font-weight: 400;
+          color: $dark--16;
           opacity: 0;
           @include anim(eyes-effect, 1s, 3s, 1);
         }
         .span--hut {
           position: absolute;
           display: flex;
-          background-color: #242424;
+          background-color: $dark--24;
           @include width-height(80px, 80px);
-          /*border: 1px solid violet;*/
-
           opacity: 0;
           @include anim(eyes-hut, 2s, 3s, 1);
-
           z-index: 20;      
           .span--eyeshut {
-            background-color: #44ff00;
-            
+            background-color: $light-green;
           }
-      
           .hut--one {
-            position: absolute;
-            bottom: 0px;
-            left: -20px;
-            @include width-height(40px, 40px);
+            @include hut-position(bottom, left, -20px);
           }
-      
           .hut--two {
-            position: absolute;
-            top: 0px;
-            left: 20px;
-            @include width-height(40px, 40px);
+            @include hut-position(top, left, 20px);
           }
-      
           .hut--three {
-            position: absolute;
-            bottom: 0px;
-            right: -20px;
-            @include width-height(40px, 40px);
+            @include hut-position(bottom, right, -20px);
           }
         }
       }
       .square--1 {
-        margin-top: 14%;
-        margin-left: 10%;
+        @include square-margin(margin-left);
       }
       .square--2 {
-        margin-top: 14%;
-        margin-right: 10%;
+        @include square-margin(margin-right);
       }
     }
     .smile {
       @include display(flex, center, center);
       font-size: 22rem;
-      color: #44ff00;
+      color: $light-green;
       @include width-height(100%, 300px);
       margin: auto;
       margin-top: 3%;
       .span--smile {
         @include width-height(40px, 40px);       
-        background-color: #44ff00;
+        background-color: $light-green;
       }
-      .external--smile {
-        @include anim-eyes(1, external-smile, 2s, 2s, 1, ease-in-out, translateY(0px));
+      .external--square--smile {
+        @include anim-eyes(external-smile);
+      }
+      .middle--square--smile {
+        @include anim-eyes(middle-smile);
       }
     }
   }
@@ -210,13 +245,8 @@ body {
     }
   }
   header {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    left: 0px;
-    @include width-height(100%, 60px);
-    @include bg-shadow(#216e83, 0px 0px 7px #999);
-    color: #f5f5f5;
+    @include absolute-top-or-bottom-rl(top, 60px);
+    color: $white-smoke;
     opacity: 1;
     @include anim(header-bg, 0s, 5s, 1);
     z-index: 15;
@@ -237,12 +267,12 @@ body {
             text-decoration: none;
             font-size: 1.4rem;
             margin: 10px 20px;
-            color: #f5f5f5;
+            color: $white-smoke;
             &:hover {
-              color: #ffdead;
+              color: $light-sandybrown;
             }
             &:active {
-              color: #ffa500;
+              color: $sandybrown;
             }
           }
         }
@@ -254,7 +284,7 @@ body {
     display: flex;
     flex-direction: column;
     @include width-height(100%, calc(100vh - 50px));
-    background-color: #222;
+    background-color: $dark--22;
     z-index: -10;
     .section--1 {
       margin-top: 7%;
@@ -266,17 +296,17 @@ body {
       margin-top: 2%;
     }
     .section {
+      display: flex;
       width: 600px;
       margin-left: 46%;
-      display: flex;
-      @include bg-shadow(#ccc, 0px 0px 10px #777);
+      @include bg-shadow($grey--cc, 0px 0px 10px $grey--77);
       border-radius: 7px;
       padding: 20px;
       article {
         width: 100%;
-        background: #708090;
+        background: $dark-grayish-blue;
         border-radius: 7px;
-        color: #ffdead;
+        color: $light-sandybrown;
         padding: 0px 20px;
         opacity: 1;
         h2 {
@@ -284,7 +314,7 @@ body {
         }
         p {
           font-size: 1.0rem;
-          border: 1px solid #5b6773;
+          border: 1px solid $dark-grayish-blue;
           border-radius: 7px;
           padding: 10px;
         }
@@ -292,13 +322,8 @@ body {
     }
   }
   footer {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    @include width-height(100%, 50px);
+    @include absolute-top-or-bottom-rl(bottom, 50px);
     @include display(flex, center, center);
-    @include bg-shadow(#216e83, 0px 0px 7px #777);
-    color: #f5f5f5;
+    color: $white-smoke;
   }
 }
