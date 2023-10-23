@@ -1,8 +1,26 @@
+import { useState } from 'react'
 import forest from '/images/forest.jpg'
 import AnimatedEye from './components/AnimatedEyes'
 import AnimatedSmile from './components/AnimatedSmile'
+import NavBar from './components/NavBar'
+import SectionComp from './components/SectionComp'
 
 function App() {
+  const [text] = useState({
+    text1: {
+      title: "Some text for example One",
+      paragraph: "Some text for example One"
+    },
+    text2: {
+      title: "Some text for example Two",
+      paragraph: "Some text for example Two"
+    },
+    text3: {
+      title: "Some text for example Three",
+      paragraph: "Some text for example Three"
+    }
+  })
+
   return (
     <>
       <div className="container">
@@ -28,54 +46,78 @@ function App() {
       </span>
 
       <header>
-        <nav>
-          <ul>
-            <li>
-              <a href="#">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Shop
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <NavBar />
       </header>
 
-      <main>
+      <main className='main'>
 
-        <section className='section section--1'>
-          <article>
-            <h2>Title h2</h2>
-            <p>Lorem ipsum ...</p>
-          </article>
-        </section>
+        <div className='dropdown--menu'>
+          <div className='dropdown--frame'>
+            <nav>
+              <ul>
+                <li>
+                  <a href="#">Link 1</a>
+                </li>
+                <ul>
+                  <li>
+                    <a href="#">subtitle 1</a>
+                  </li>
+                  <li>
+                    <a href="#">subtitle 2</a>
+                  </li>
+                  <li>
+                    <a href="#">subtitle 3</a>
+                  </li>
+                </ul>
+              </ul>
+            </nav>
+          </div>
+        </div>
 
-        <section className='section section--2'>
-          <article>
-            <h2>Title h2</h2>
-            <p>Lorem ipsum ...</p>
-          </article>
-        </section>
+        <div className='main--section'>
 
-        <section className='section section--3'>
-          <article>
-            <h2>Title h2</h2>
-            <p>Lorem ipsum ...</p>
-          </article>
-        </section>
+          <SectionComp
+            className='section section--1'
+            title={text.text1.title}
+            paragraph={text.text1.paragraph}
+          />
+
+          <SectionComp
+            className='section section--2'
+            title={text.text2.title}
+            paragraph={text.text2.paragraph}
+          />
+
+          <SectionComp
+            className='section section--3'
+            title={text.text3.title}
+            paragraph={text.text3.paragraph}
+          />
+
+          <SectionComp
+            className='section section--3'
+            title={text.text3.title}
+            paragraph={text.text3.paragraph}
+          />
+
+          <SectionComp
+            className='section section--3'
+            title={text.text3.title}
+            paragraph={text.text3.paragraph}
+          />
+
+          <SectionComp
+            className='section section--3'
+            title={text.text3.title}
+            paragraph={text.text3.paragraph}
+          />
+
+        </div>
 
       </main>
       
       <footer>
-        <h3>esteban@mail.com</h3>
+        <h3>philogenie@protonmail.com</h3>
       </footer>
     </>
   )
