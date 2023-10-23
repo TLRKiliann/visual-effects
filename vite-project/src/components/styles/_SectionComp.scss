@@ -4,24 +4,23 @@
 .section {
   display: flex;
   width: 600px;
-  @include bg-shadow($grey--cc, 0px 0px 10px $grey--77);
+  @include bg-shadow($grey--77, 0px 0px 4px $dark--42);
   border-radius: 7px;
-
   margin-top: 20px;
+  filter: opacity(80%);
   padding: 20px;
   article {
     width: 100%;
-    background: $dark-grayish-blue;
+    background-color: $dark-grayish-blue;
     border-radius: 7px;
-    color: $light-sandybrown;
+    color: $light--sandybrown;
     padding: 0px 20px;
-    opacity: 1;
     h2 {
       font-size: 1.4rem;
     }
     p {
       font-size: 1.0rem;
-      border: 1px solid $dark-grayish-blue;
+      border: 1px solid $dark--cyan;
       border-radius: 7px;
       padding: 10px;
     }
