@@ -1,0 +1,34 @@
+@use "src/App" as *;
+@use 'src/colors' as *;
+
+.span--eyescircle {
+    @include display(flex, center, center);
+    @include width-height(80px, 80px);
+    margin: auto;
+    font-size: 3rem;
+    font-weight: 400;
+    color: $dark--16;
+    opacity: 0;
+    @include anim(eyes-effect, 1s, 3s, 1);
+  }
+  .span--hut {
+    position: absolute;
+    display: flex;
+    background-color: $dark--24;
+    @include width-height(80px, 80px);
+    opacity: 0;
+    @include anim(eyes-hut, 2s, 3s, 1);
+    z-index: 20;      
+    .span--eyeshut {
+      background-color: $light-green;
+    }
+    .hut--one {
+      @include hut-position(bottom, left, -20px);
+    }
+    .hut--two {
+      @include hut-position(top, left, 20px);
+    }
+    .hut--three {
+      @include hut-position(bottom, right, -20px);
+    }
+  }
