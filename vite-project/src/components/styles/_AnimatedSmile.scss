@@ -1,0 +1,13 @@
+@use "src/App" as *;
+@use 'src/colors' as *;
+
+.span--smile {
+    @include width-height(40px, 40px);       
+    background-color: $light-green;
+}
+.external--square--smile {
+    @include anim-eyes(external-smile);
+}
+.middle--square--smile {
+    @include anim-eyes(middle-smile);
+}

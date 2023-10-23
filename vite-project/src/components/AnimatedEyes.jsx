@@ -1,5 +1,4 @@
 import React from 'react'
-import './styles/AnimatedEyes.scss'
 
 export default function AnimatedEyes() {
   return (

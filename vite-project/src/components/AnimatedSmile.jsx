@@ -1,5 +1,4 @@
 import React from 'react'
-import './styles/AnimatedSmile.scss'
 
 export default function AnimatedSmile() {
   return (

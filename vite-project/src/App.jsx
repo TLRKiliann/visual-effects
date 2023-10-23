@@ -1,7 +1,6 @@
 import forest from '/images/forest.jpg'
 import AnimatedEye from './components/AnimatedEyes'
 import AnimatedSmile from './components/AnimatedSmile'
-import './App.scss'
 
 function App() {
   return (

@@ -1,32 +1,5 @@
-$dark--16: #161616;
-$dark--24: #242424;
-$light-green: #44ff00;
-
-@mixin display($display, $align, $content) {
-    display: $display;
-    align-items: $align;
-    justify-content: $content;
-}
-
-@mixin width-height($width, $height) {
-    width: $width;
-    height: $height;
-}
-
-@mixin anim($name, $delay, $duration, $itercount) {
-    animation: $name;
-    animation-delay: $delay;
-    animation-duration: $duration;
-    animation-iteration-count: $itercount;
-}
-
-@mixin hut-position($top-or-bottom, $left-or-right, $px) {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    #{$top-or-bottom}: 0px;
-    #{$left-or-right}: $px;
-  }
+@use "src/App" as *;
+@use 'src/colors' as *;
 
 .span--eyescircle {
     @include display(flex, center, center);
