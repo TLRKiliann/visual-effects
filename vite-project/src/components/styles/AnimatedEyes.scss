@@ -1,0 +1,61 @@
+$dark--16: #161616;
+$dark--24: #242424;
+$light-green: #44ff00;
+
+@mixin display($display, $align, $content) {
+    display: $display;
+    align-items: $align;
+    justify-content: $content;
+}
+
+@mixin width-height($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin anim($name, $delay, $duration, $itercount) {
+    animation: $name;
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-iteration-count: $itercount;
+}
+
+@mixin hut-position($top-or-bottom, $left-or-right, $px) {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    #{$top-or-bottom}: 0px;
+    #{$left-or-right}: $px;
+  }
+
+.span--eyescircle {
+    @include display(flex, center, center);
+    @include width-height(80px, 80px);
+    margin: auto;
+    font-size: 3rem;
+    font-weight: 400;
+    color: $dark--16;
+    opacity: 0;
+    @include anim(eyes-effect, 1s, 3s, 1);
+  }
+  .span--hut {
+    position: absolute;
+    display: flex;
+    background-color: $dark--24;
+    @include width-height(80px, 80px);
+    opacity: 0;
+    @include anim(eyes-hut, 2s, 3s, 1);
+    z-index: 20;      
+    .span--eyeshut {
+      background-color: $light-green;
+    }
+    .hut--one {
+      @include hut-position(bottom, left, -20px);
+    }
+    .hut--two {
+      @include hut-position(top, left, 20px);
+    }
+    .hut--three {
+      @include hut-position(bottom, right, -20px);
+    }
+  }

@@ -1,0 +1,27 @@
+$light-green: #44ff00;
+
+@mixin width-height($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin anim-eyes($name) {
+    opacity: 1;
+    animation-name: $name;
+    animation-delay: 2s;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    transform: translateY(0px);  
+}
+
+.span--smile {
+    @include width-height(40px, 40px);       
+    background-color: $light-green;
+}
+.external--square--smile {
+    @include anim-eyes(external-smile);
+}
+.middle--square--smile {
+    @include anim-eyes(middle-smile);
+}

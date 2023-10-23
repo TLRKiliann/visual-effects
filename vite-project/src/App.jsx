@@ -1,49 +1,33 @@
 import forest from '/images/forest.jpg'
+import AnimatedEye from './components/AnimatedEyes'
+import AnimatedSmile from './components/AnimatedSmile'
 import './App.scss'
 
 function App() {
-
   return (
     <>
       <div className="container">
+
         <div className='box'>
           <div className='square square--1'>
-            
-            <span className='span--eyescircle'>O</span>
-
-            <div className='span--hut'>
-              <span className='span--eyeshut hut--one'></span>
-              <span className='span--eyeshut hut--two'></span>
-              <span className='span--eyeshut hut--three'></span>
-            </div>
-
+            <AnimatedEye />
           </div>
 
           <div className='square square--2'>
-            
-            <span className='span--eyescircle'>O</span>
-            
-            <div className='span--hut'>
-              <span className='span--eyeshut hut--one'></span>
-              <span className='span--eyeshut hut--two'></span>
-              <span className='span--eyeshut hut--three'></span>
-            </div>
-
+            <AnimatedEye />
           </div>
         </div>
-        <div className='smile'>
-          
-          <span className='span--smile external--square--smile'></span>
-          <span className='span--smile middle--square--smile'></span>
-          <span className='span--smile'></span>
-          <span className='span--smile middle--square--smile'></span>
-          <span className='span--smile external--square--smile'></span>
 
+        <div className='smile'>
+          <AnimatedSmile />
         </div>
+      
       </div>
+      
       <span className='span--img'>
         <img src={forest} width="1920" height="1080" alt="forst.jpg" />
       </span>
+
       <header>
         <nav>
           <ul>

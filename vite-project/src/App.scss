@@ -120,16 +120,6 @@ $dark-cyan: #336699;
   left: $left;
 }
 
-@mixin anim-eyes($name) {
-  opacity: 1;
-  animation-name: $name;
-  animation-delay: 2s;
-  animation-duration: 2s;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-in-out;
-  transform: translateY(0px);  
-}
-
 @mixin hut-position($top-or-bottom, $left-or-right, $px) {
   position: absolute;
   width: 40px;
@@ -175,37 +165,6 @@ body {
         border-radius: 3px;
         opacity: 0;
         @include anim(eyes-effect, 0s, 3s, 1);
-        .span--eyescircle {
-          @include display(flex, center, center);
-          @include width-height(80px, 80px);
-          margin: auto;
-          font-size: 3rem;
-          font-weight: 400;
-          color: $dark--16;
-          opacity: 0;
-          @include anim(eyes-effect, 1s, 3s, 1);
-        }
-        .span--hut {
-          position: absolute;
-          display: flex;
-          background-color: $dark--24;
-          @include width-height(80px, 80px);
-          opacity: 0;
-          @include anim(eyes-hut, 2s, 3s, 1);
-          z-index: 20;      
-          .span--eyeshut {
-            background-color: $light-green;
-          }
-          .hut--one {
-            @include hut-position(bottom, left, -20px);
-          }
-          .hut--two {
-            @include hut-position(top, left, 20px);
-          }
-          .hut--three {
-            @include hut-position(bottom, right, -20px);
-          }
-        }
       }
       .square--1 {
         @include square-margin(margin-left);
@@ -221,16 +180,6 @@ body {
       @include width-height(100%, 300px);
       margin: auto;
       margin-top: 3%;
-      .span--smile {
-        @include width-height(40px, 40px);       
-        background-color: $light-green;
-      }
-      .external--square--smile {
-        @include anim-eyes(external-smile);
-      }
-      .middle--square--smile {
-        @include anim-eyes(middle-smile);
-      }
     }
   }
   .span--img {
