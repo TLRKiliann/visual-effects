@@ -1,6 +1,21 @@
 @use 'src/colors' as *;
 
-nav {
+.container--header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  .img--span {
+    display: flex;
+    width: 63px;
+    height: auto;
+    img {
+      display: flex;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+  nav {
     width: 100%;
     display: flex;
     line-height: 50%;
@@ -17,9 +32,9 @@ nav {
           text-decoration: none;
           font-size: 1.4rem;
           margin: 10px 20px;
-          color: $white-smoke;
+          color: $white--smoke;
           &:hover {
-            color: $light-sandybrown;
+            color: $light--sandybrown;
           }
           &:active {
             color: $sandybrown;
@@ -28,3 +43,4 @@ nav {
       }
     }
   }
+}

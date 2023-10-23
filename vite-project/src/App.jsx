@@ -4,6 +4,7 @@ import AnimatedEye from './components/AnimatedEyes'
 import AnimatedSmile from './components/AnimatedSmile'
 import NavBar from './components/NavBar'
 import SectionComp from './components/SectionComp'
+import DropDownComp from './components/DropDownComp'
 
 function App() {
   const [text] = useState({
@@ -23,6 +24,9 @@ function App() {
 
   return (
     <>
+      <div className='back--color'>
+
+      </div>
       <div className="container">
 
         <div className='box'>
@@ -33,6 +37,7 @@ function App() {
           <div className='square square--2'>
             <AnimatedEye />
           </div>
+        
         </div>
 
         <div className='smile'>
@@ -51,27 +56,8 @@ function App() {
 
       <main className='main'>
 
-        <div className='dropdown--menu'>
-          <div className='dropdown--frame'>
-            <nav>
-              <ul>
-                <li>
-                  <a href="#">Link 1</a>
-                </li>
-                <ul>
-                  <li>
-                    <a href="#">subtitle 1</a>
-                  </li>
-                  <li>
-                    <a href="#">subtitle 2</a>
-                  </li>
-                  <li>
-                    <a href="#">subtitle 3</a>
-                  </li>
-                </ul>
-              </ul>
-            </nav>
-          </div>
+        <div className='main--dropdown'>
+          <DropDownComp />
         </div>
 
         <div className='main--section'>
@@ -113,6 +99,8 @@ function App() {
           />
 
         </div>
+
+
 
       </main>
       

@@ -3,7 +3,7 @@
 
 .smile--span {
     @include width-height(40px, 40px);       
-    background-color: $light-green;
+    background-color: $light--green;
 }
 .external--square--smilel {
     @include anim-eyes(external-smile-l, margin-right, -10px, 50% 0% 0% 50%);

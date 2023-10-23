@@ -20,7 +20,7 @@
     @include anim(eyes-hut, 2s, 3s, 1);
     z-index: 20;      
     .span--eyeshut {
-      background-color: $light-green;
+      background-color: $light--green;
     }
     .hut--one {
       @include hut-position(bottom, left, -20px);

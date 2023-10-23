@@ -1,8 +1,12 @@
 import React from 'react'
+import hack from '/images/hack-the-planet.jpg';
 
 export default function NavBar() {
   return (
-    <>
+    <div className="container--header">
+      <span className='img--span'>
+        <img src={hack} width="100%" height="100%" alt="hack the planet" />
+      </span>
       <nav>
         <ul>
           <li>
@@ -22,6 +26,6 @@ export default function NavBar() {
           </li>
         </ul>
       </nav>
-    </>
+    </div>
   )
 }
