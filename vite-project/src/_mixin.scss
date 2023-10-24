@@ -1,0 +1,80 @@
+@use './_colors' as *;
+
+@mixin opacity-bg($opacity, $bg-color) {
+    opacity: $opacity;
+    background-color: $bg-color;
+}
+  
+@mixin external-smile-anim($rotate, $translate) {
+    opacity: 1;
+    rotate: $rotate;
+    transform: $translate;
+}
+
+@mixin anim($name, $delay, $duration, $itercount) {
+    animation: $name;
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-iteration-count: $itercount;
+}
+  
+@mixin anim-eyes($name, $margin-left-or-right, $px, $border-rad) {
+    #{$margin-left-or-right}: $px;
+    border-radius: $border-rad;
+    opacity: 1;
+    animation-name: $name;
+    animation-delay: 2s;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    transform: translateY(0px);  
+}
+  
+@mixin width-height($width, $height) {
+    width: $width;
+    height: $height;
+}
+  
+@mixin display($display, $align, $content) {
+    display: $display;
+    align-items: $align;
+    justify-content: $content;
+}
+  
+@mixin bg-shadow($bg-color, $shadow) {
+    background-color: $bg-color;
+    box-shadow: $shadow;
+}
+  
+@mixin position-abs-fix($abs-fix, $top, $right, $bottom, $left) {
+    position: $abs-fix;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+  
+@mixin hut-position($top-or-bottom, $left-or-right, $px) {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    #{$top-or-bottom}: 0px;
+    #{$left-or-right}: $px;
+}
+  
+@mixin square-margin($margin-left-or-right) {
+    margin-top: 14%;
+    #{$margin-left-or-right}: 10%;
+}
+  
+@mixin absolute-top-or-bottom-rl($top-or-bottom, $height) {
+    position: fixed;
+    #{$top-or-bottom}: 0px;
+    right: 0px;
+    left: 0px;
+    width: 100%;
+    height: $height;
+    background: linear-gradient(30deg, 
+      $dark-grayish-blue 10%, $grey--cc 40%, $dark-grayish-blue 70%); 
+    box-shadow: 0px 0px 4px $border--frame;
+}
