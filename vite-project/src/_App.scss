@@ -176,7 +176,7 @@
   height: $height;
   background: linear-gradient(30deg, 
     $dark-grayish-blue 10%, $grey--cc 40%, $dark-grayish-blue 70%); 
-  box-shadow: 0px 0px 4px $grey--cc;
+  box-shadow: 0px 0px 4px $border--frame;
 }
 
 body {
