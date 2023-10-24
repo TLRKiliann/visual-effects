@@ -1,6 +1,15 @@
 @use 'src/_mixin' as *;
 @use 'src/_colors' as *;
 
+@keyframes body-overflow {
+  0% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: hidden;
+  }
+} 
+
 @keyframes front-bg {
   0% {
     @include opacity-bg(1, $dark--22);
@@ -105,15 +114,10 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  @include anim(body-overflow, 0s, 3s, 1);
   .back--color {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+    @include bg--font();
     max-height: 200%;
-    background-color: $dark--16;
     filter: opacity(40%);
     z-index: -1;
   }
