@@ -1,5 +1,5 @@
 import React from 'react'
-import hack from '/images/hack-the-planet.jpg';
+import hack from '/images/koala_tree.png';
 
 export default function NavBar() {
   return (

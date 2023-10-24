@@ -1,28 +1,43 @@
-@use 'src/App' as *;
+@use 'src/_mixin' as *;
 @use 'src/colors' as *;
 
 .section {
   display: flex;
   width: 600px;
-  @include bg-shadow($grey--77, 0px 0px 4px $dark--42);
+  background-color: $border--frame;
   border-radius: 7px;
   margin-top: 20px;
   filter: opacity(80%);
-  padding: 20px;
+  padding: 10px;
   article {
     width: 100%;
     background-color: $dark-grayish-blue;
     border-radius: 7px;
-    color: $light--sandybrown;
+    color: $white--smoke;
     padding: 0px 20px;
     h2 {
       font-size: 1.4rem;
     }
-    p {
-      font-size: 1.0rem;
-      border: 1px solid $dark--cyan;
+    .paragraph-menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 30px;
+      background-color: $submenu--color;
       border-radius: 7px;
+      margin-bottom: 20px;
       padding: 10px;
+      p {
+        font-size: 1.0rem;
+      }
+      button {
+        background-color: $dark--24;
+        border-color: $border--frame;
+        border-radius: 7px;
+        font-weight: 600;
+        color: $white--smoke;
+        padding: 7px 30px;
+      }
     }
   }
 }

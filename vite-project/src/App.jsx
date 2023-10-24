@@ -100,8 +100,6 @@ function App() {
 
         </div>
 
-
-
       </main>
       
       <footer>

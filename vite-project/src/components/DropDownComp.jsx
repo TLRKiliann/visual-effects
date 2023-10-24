@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function DropDownComp() {
 
@@ -22,12 +22,20 @@ export default function DropDownComp() {
     });
   }
 
+  useEffect(() => {
+    const callFn = () => {
+      menuDropdown();
+    }
+    callFn();
+    return () => console.log("menu drop-down loaded");
+  }, [])
+
   return (
     <>
         <div className='dropdown--menu'>
           <aside>
             <ul>
-                <li>
+                <li className='dropdown--tilte'>
                   <a onClick={menuDropdown}>Story of Nier</a>
                     <ul>
                         <li><a href="#">Draken Guard 1 - 2 - 3</a></li>
@@ -35,7 +43,7 @@ export default function DropDownComp() {
                         <li><a href="#">Nier Automata</a></li>
                     </ul>
                 </li>
-                <li>
+                <li className='dropdown--tilte'>
                   <a onClick={menuDropdown}>Heros</a>
                     <ul>
                         <li><a href="#">9S</a></li>
@@ -43,11 +51,12 @@ export default function DropDownComp() {
                         <li><a href="#">A2</a></li>
                     </ul>
                 </li>
-                <li>
+                <li className='dropdown--tilte'>
                   <a onClick={menuDropdown}>Bonus</a>
                     <ul>
                         <li><a href="#">Animation</a></li>
                         <li><a href="#">Game Play</a></li>
+                        <li><a href="#">Goodies</a></li>
                     </ul>
                 </li>
             </ul>

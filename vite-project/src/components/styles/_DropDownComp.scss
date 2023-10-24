@@ -1,73 +1,72 @@
-@use "src/App" as *;
+@use 'src/_mixin' as *;
 @use 'src/colors' as *;
 
 .dropdown--menu {
   position: fixed;
   top: 60px;
   @include width-height(auto, auto);
-  background-color: $white--smoke;
+  background: $border--frame;
   border-radius: 0px 0px 7px 0px;
   filter: opacity(90%);
   opacity: 1;
+
   @include anim(dropdown-anim, 0s, 5s, 1);
+  padding: 0px;
   z-index: 20;
   aside {
     margin-top: 0px;
     @include width-height(300px, auto);
     background-color: $menu--color;
     ul {
-      list-style:none;
-      margin:0; 
-      padding:0;
+      list-style: none;
+      margin: 0; 
+      padding: 0;
     }
   }
   aside {
     ul { 
       li {
         a {
-          color: $white--smoke;
-          font-size: 16px;
-          text-decoration: none;
           display: block; 
           line-height: 50px;
+          text-decoration: none;
+          font-size: 16px;
+          color: $white--smoke;
           padding: 0px 20px;
           transition: background 0.5s;
-        }
-      }
-    }
-  }
-  aside {
-    ul {
-      li {
-        a:hover {
-          background:rgba(255, 255, 255, 0.1);
-          color: $light--sandybrown;
-        }
-      }
-    }
-  }
-  aside {
-    ul {
-      li {
-        a {
-          border-top: 1px solid $dark--cyan;
-          border-bottom: 1px solid $dark--cyan;
+          &:hover {
+            background:rgba(255, 255, 255, 0.1);
+            color: $light--sandybrown;
+          }
         }
       }
     }
   }
   aside > ul > li.active > a::after {
-    transform:rotate(180deg);
+    transform: rotate(180deg);
   }
   aside > ul > li > ul {
     overflow: hidden;
-    height:0;
-    transition:height 0.5s;
+    height: 0;
+    background: $submenu--color;
+    transition: height 0.5s;
   }
   aside > ul > li.active > ul {
-    display:block;
+    display: block;
   }
-  aside ul li ul li a {
-    padding:0px 40px; border-right:10px solid $dark--cyan;
+  aside {
+    ul {
+      li {
+        ul {
+          li {
+            a {
+              font-size: 14px;
+              border-right: 10px solid $shadow-grayish-blue;
+              padding: 0px 40px;
+            }
+          }
+        }
+      }
+    }
   }
 }
