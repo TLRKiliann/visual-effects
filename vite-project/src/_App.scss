@@ -157,7 +157,7 @@ body {
   }
   .span--img {
     @include position-abs-fix(fixed, 0px, 0px, 0px, 0px);
-    filter: opacity(80%);
+    filter: opacity(90%);
     z-index: -2;
     img {
       @include width-height(100%, 100%);
@@ -185,6 +185,6 @@ body {
     @include absolute-top-or-bottom-rl(bottom, 50px);
     @include display(flex, center, center);
     @include anim(header-footer-footer-bg, 0s, 5s, 1);
-    color: $dark-grayish-blue;
+    color: $dark-font;
   }
 }
