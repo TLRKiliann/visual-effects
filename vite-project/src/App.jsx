@@ -9,6 +9,7 @@ import DropDownComp from './components/DropDownComp'
 import datas from './lib/datas'
 
 function App() {
+
   const [text] = useState({
     text1: {
       title: "Some text for example One",
