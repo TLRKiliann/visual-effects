@@ -1,0 +1,56 @@
+.boxone--inside {
+    .boxone--title {
+        .title--h4 {
+            text-align: center;
+            margin: auto;
+            margin: 20px 0px;
+        }
+    } 
+}
+.box--name--data {
+    padding: 0px 20px;
+    p {
+        color: #f5f5f5;
+    }
+}
+.box--name--tochange {
+    display: flex;
+    flex-direction: column;
+    color: #f5f5f5;
+    padding: 0px 20px;
+    .label--name {
+        padding-bottom: 10px;
+    }
+    .input--name {
+        background: rgba(255,255,255, 0.1);
+        border: none;
+        outline: none;
+        
+        font-size: 1.1rem;
+        color: #f5f5f5;
+
+        padding: 5px 7px;
+    }        
+} 
+.box--name--btn {
+    display: flex;
+    justify-content: center;
+    button {
+        font-weight: 600;
+        color: #333;
+
+        margin: 20px 0px;
+        padding: 5px 20px;
+    }
+}
+.box--name--showhide {
+    display: flex;
+    justify-content: center;
+    button {
+        font-weight: 600;
+        color: #333;
+
+        margin-bottom: 20px;
+        padding: 5px 20px;
+    }
+}

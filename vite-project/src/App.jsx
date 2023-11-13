@@ -3,10 +3,13 @@ import forest from '/images/forest.jpg'
 import AnimatedEye from './components/AnimatedEyes'
 import AnimatedSmile from './components/AnimatedSmile'
 import NavBar from './components/NavBar'
+import BoxOne from './components/BoxOne'
 import SectionComp from './components/SectionComp'
 import DropDownComp from './components/DropDownComp'
+import datas from './lib/datas'
 
 function App() {
+
   const [text] = useState({
     text1: {
       title: "Some text for example One",
@@ -60,43 +63,51 @@ function App() {
           <DropDownComp />
         </div>
 
-        <div className='main--section'>
+        <div className='main--container'>
 
-          <SectionComp
-            className='section section--1'
-            title={text.text1.title}
-            paragraph={text.text1.paragraph}
-          />
+          <div className='box--one'>
+            <BoxOne datas={datas} />
+          </div>
 
-          <SectionComp
-            className='section section--2'
-            title={text.text2.title}
-            paragraph={text.text2.paragraph}
-          />
+          <div className='main--sectionTwo'>
 
-          <SectionComp
-            className='section section--3'
-            title={text.text3.title}
-            paragraph={text.text3.paragraph}
-          />
+            <SectionComp
+              className='section section--1'
+              title={text.text1.title}
+              paragraph={text.text1.paragraph}
+            />
 
-          <SectionComp
-            className='section section--3'
-            title={text.text3.title}
-            paragraph={text.text3.paragraph}
-          />
+            <SectionComp
+              className='section section--2'
+              title={text.text2.title}
+              paragraph={text.text2.paragraph}
+            />
 
-          <SectionComp
-            className='section section--3'
-            title={text.text3.title}
-            paragraph={text.text3.paragraph}
-          />
+            <SectionComp
+              className='section section--3'
+              title={text.text3.title}
+              paragraph={text.text3.paragraph}
+            />
 
-          <SectionComp
-            className='section section--3'
-            title={text.text3.title}
-            paragraph={text.text3.paragraph}
-          />
+            <SectionComp
+              className='section section--3'
+              title={text.text3.title}
+              paragraph={text.text3.paragraph}
+            />
+
+            <SectionComp
+              className='section section--3'
+              title={text.text3.title}
+              paragraph={text.text3.paragraph}
+            />
+
+            <SectionComp
+              className='section section--3'
+              title={text.text3.title}
+              paragraph={text.text3.paragraph}
+            />
+
+          </div>
 
         </div>
 

@@ -3,15 +3,15 @@
 
 .section {
   display: flex;
-  width: 600px;
+  width: 500px;
   background-color: $border--frame;
   border-radius: 7px;
   margin-top: 20px;
-  filter: opacity(80%);
+  filter: opacity(90%);
   padding: 10px;
   article {
     width: 100%;
-    background-color: $dark-grayish-blue;
+    background-color: $dark-font;
     border-radius: 7px;
     color: $white--smoke;
     padding: 0px 20px;
