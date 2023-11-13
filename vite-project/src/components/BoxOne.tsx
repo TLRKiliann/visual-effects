@@ -1,64 +1,30 @@
 import React, { useState, useEffect } from 'react'
-
-type DetailsProps = {
-    id: number;
-    name: string;
-    bool: boolean;
-};
-
-type DataProps = {
-    datas: DetailsProps[];
-    id: number;
-    name: string;
-    bool: boolean;
-};
+import handleChange from '../lib/handleChange'
+import handleToggle from '../lib/handleToggle'
+import handleClick from '../lib/handleClick'
+import { DataProps, DetailsProps } from '../lib/definitions'
 
 export default function BoxOne({datas}: DataProps) {
 
     const [newDatas, setNewDatas] = useState<DetailsProps[]>([])
-    const [register, setRegister] = useState<string>("");
+    const [register, setRegister] = useState<DetailsProps[]>([]);
     const [inputVal, setInputVal] = useState<string>("");
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>, id:number): void => {
-        const { name, value } = e.target;
-        const searchId = newDatas.find((data) => data.id === id);
-        console.log("handlechange", searchId); // Object { id: 2, name: "Nathan" }
-        const mappingChange = newDatas.map((data) => data.id === id 
-            ? {...data, id: data.id, [name]: value} 
-            : data);
-        console.log(mappingChange, "map");
-        setNewDatas(mappingChange);
-        setInputVal(value);
-    }
-
-    const handleClick = (id: number): void => {
-        console.log("clicked for id", id)
-        const searchById = newDatas.find((newData) => newData.id === id);
-        console.log("searchById", searchById) // Object { id: 2, name: "Nathan" }
-        const mapName = newDatas.filter((newData) => newData.id !== searchById?.id 
-            ? {...searchById, id: newData.id, name: inputVal} 
-            : newData);
-        setNewDatas(mapName);
-        setRegister(inputVal);
-        setInputVal("");
-    }
 
     useEffect(() => {
         const mapping = datas.map((data) => data)
         setNewDatas(mapping);
     }, [])
 
-    const handleToggle = (id: number): void => {
-        const searchById = newDatas.find((newData) => newData.id === id);
-        console.log(searchById, "searchById toogle")
-        const mappingBool = newDatas.map((data) => data.id === searchById?.id 
-            ? {...searchById, 
-                id: searchById?.id, 
-                name: searchById?.name, 
-                bool: !searchById?.bool
-            } : data)
-        console.log(mappingBool, "machin")
-        setNewDatas(mappingBool);
+    const callHandleChange = (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
+        handleChange(e, { newDatas, setNewDatas }, { setInputVal }, id);
+    };
+
+    const callHandleClick = (id: number) => {
+        handleClick(id, { newDatas, setNewDatas }, { setRegister }, inputVal, { setInputVal });
+    }
+    
+    const callHandleToggle = (id: number) => {
+        handleToggle(id, { newDatas, setNewDatas });
     }
 
     return (
@@ -89,14 +55,14 @@ export default function BoxOne({datas}: DataProps) {
                                 type="text"
                                 name="name"
                                 value={inputVal}
-                                onChange={(e) => handleChange(e, data?.id)}
+                                onChange={(e) => callHandleChange(e, data?.id)}
                                 className="input--name"
                             />
 
                         </div>
 
                         <div className="box--name--btn">
-                            <button type="button" onClick={() => handleClick(data?.id)}>Save</button>
+                            <button type="button" onClick={() => callHandleClick(data?.id)}>Save</button>
                         </div>
                     </>
                     ) : null
@@ -104,11 +70,13 @@ export default function BoxOne({datas}: DataProps) {
 
                 <div className="box--name--showhide">
                     <button
-                        type="button" onClick={() => handleToggle(data?.id)}
+                        type="button" onClick={() => callHandleToggle(data?.id)}
                     >{data.bool === false ? "Change" : "Hide"}</button>
                 </div>
                 
-                <p style={{color: "orangered"}}>Name registered: {register}</p>
+                {register.map((reg) => reg.id === data.id ? (
+                <p className="register--p">Name registered: {reg.name}</p>
+                ): null)}
 
             </div>
 
