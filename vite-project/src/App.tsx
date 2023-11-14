@@ -6,7 +6,6 @@ import NavBar from './components/NavBar'
 import BoxOne from './components/BoxOne'
 import SectionComp from './components/SectionComp'
 import DropDownComp from './components/DropDownComp'
-import datas from './lib/datas'
 
 function App() {
 
@@ -66,7 +65,7 @@ function App() {
         <div className='main--container'>
 
           <div className='box--one'>
-            <BoxOne datas={datas} />
+            <BoxOne />
           </div>
 
           <div className='main--sectionTwo'>

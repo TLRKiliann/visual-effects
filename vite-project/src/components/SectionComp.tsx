@@ -1,6 +1,12 @@
 import React from 'react'
 
-export default function SectionComp(props) {
+type TextProps = {
+  className: string;
+  title: string;
+  paragraph: string;
+}
+
+export default function SectionComp(props: TextProps) {
   
   const handleClick = () => {
     alert("Clicked !");
