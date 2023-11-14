@@ -33,14 +33,10 @@ export default function BoxOne() {
 
         {newDatas.map((data) => (
 
-            <div key={data.id}>
-
-                <div className='boxone--title'>
-                    <h4 className='title--h4'>Member ID: {data.id}</h4>
-                </div>
+            <div key={data.id} className='boxone--box'>
                     
                 <div className='box--name--data'>
-                    <p>Name: {data.name}</p>
+                    <p>Member: {data.name}</p>
                 </div>
                 
                 {(data.bool === true) && (register.length === 0) ? (

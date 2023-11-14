@@ -5,7 +5,7 @@
   position: fixed;
   top: 70px;
   @include width-height(auto, auto);
-  @include bgColorBorderRadius($dark--42);
+  @include bgColorBorderRadius(transparent);
   filter: opacity(90%);
   @include anim(dropdown-anim, 0s, 5s, 1);
   padding: 0px;
@@ -13,7 +13,7 @@
   aside {
     margin-top: 0px;
     @include width-height(300px, auto);
-    background-color: $dark--font;
+    background-color: $shadow-grayish-blue;
     ul {
       list-style: none;
       @include marginPad(margin, 0, padding, 0);
@@ -28,7 +28,7 @@
           padding: 0px 20px;
           transition: background 0.5s;
           &:hover {
-            background:rgba(255, 255, 255, 0.1);
+            background: rgba(200, 200, 200, 0.1);
             color: $light--sandybrown;
           }
         }
@@ -41,7 +41,7 @@
   aside > ul > li > ul {
     overflow: hidden;
     height: 0;
-    background: $submenu--color;
+    background: rgba(255, 255, 255, 0.1);
     transition: height 0.5s;
   }
   aside > ul > li.active > ul {
@@ -54,7 +54,7 @@
           li {
             a {
               font-size: 14px;
-              border-right: 10px solid $dark--font;
+              border-right: 10px solid $dark--light--opacity;
               padding: 0px 40px;
             }
           }

@@ -121,7 +121,7 @@
 } 
 
 @mixin bgColorBorderRadius($color) {
-    background-color: $color;
+    background: $color;
     border-radius: 7px;
 }
 
