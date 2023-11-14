@@ -3,16 +3,17 @@ import handleChange from '../lib/handleChange'
 import handleToggle from '../lib/handleToggle'
 import handleClick from '../lib/handleClick'
 import { DataProps, DetailsProps } from '../lib/definitions'
+import datas from '../lib/datas'
 
-export default function BoxOne({datas}: DataProps) {
+export default function BoxOne() {
 
-    const [newDatas, setNewDatas] = useState<DetailsProps[]>([])
+    const [newDatas, setNewDatas] = useState<DetailsProps[] >([])
     const [register, setRegister] = useState<DetailsProps[]>([]);
     const [inputVal, setInputVal] = useState<string>("");
 
     useEffect(() => {
-        const mapping = datas.map((data) => data)
-        setNewDatas(mapping);
+        //const mapping = datas.map((data) => data)
+        setNewDatas(datas);
     }, [])
 
     const callHandleChange = (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
