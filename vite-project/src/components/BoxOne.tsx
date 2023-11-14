@@ -12,7 +12,7 @@ export default function BoxOne() {
     const [inputVal, setInputVal] = useState<string>("");
 
     useEffect(() => {
-        //const mapping = datas.map((data) => data)
+        //const mapping = datas.map((data) => data) bullshit
         setNewDatas(datas);
     }, [])
 
@@ -43,7 +43,7 @@ export default function BoxOne() {
                     <p>Name: {data.name}</p>
                 </div>
                 
-                {data.bool === true ? (
+                {(data.bool === true) && (register.length === 0) ? (
                     <>
                         <div className='box--name--tochange'>
                             
@@ -72,12 +72,13 @@ export default function BoxOne() {
                 <div className="box--name--showhide">
                     <button
                         type="button" onClick={() => callHandleToggle(data?.id)}
-                    >{data.bool === false ? "Change" : "Hide"}</button>
+                    >{data.bool === true && (register.length === 0) ? "Hide" : "Change"}</button>
                 </div>
                 
                 {register.map((reg) => reg.id === data.id ? (
-                <p className="register--p">Name registered: {reg.name}</p>
-                ): null)}
+                    <p className="register--p">Name registered: {reg.name}</p>
+                    ) : null)
+                }
 
             </div>
 

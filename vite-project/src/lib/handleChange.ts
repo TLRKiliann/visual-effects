@@ -7,11 +7,9 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>,
     id: number): void => {
     const { name, value } = e.target;
     const searchId = newDatas.find((data) => data.id === id);
-    console.log("handlechange", searchId); // Object { id: 2, name: "Nathan" }
-    const mappingChange = newDatas.map((data) => data.id === id 
+    const mappingChange = newDatas.map((data) => data.id === searchId?.id 
         ? {...data, id: data.id, [name]: value} 
         : data);
-    console.log(mappingChange, "map");
     setNewDatas(mappingChange);
     setInputVal(value);
 }

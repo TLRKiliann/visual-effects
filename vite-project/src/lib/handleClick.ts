@@ -5,11 +5,9 @@ const handleClick = (id: number,
     {setRegister}: SetRegisterProps, 
     inputVal: string, 
     {setInputVal}: SetInputProps): void => {
-    console.log("clicked for id", id)
     const searchById = newDatas.find((newData) => newData.id === id);
-    console.log("searchById", searchById) // Object { id: 2, name: "Nathan" }
     const mapName = newDatas.filter((newData) => newData.id !== searchById?.id 
-        ? {...searchById, id: newData.id, name: inputVal} 
+        ? {...searchById, id: searchById?.id, name: inputVal} 
         : newData);
     setNewDatas(mapName);
     setRegister(mapName);
