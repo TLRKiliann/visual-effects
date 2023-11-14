@@ -3,35 +3,28 @@
 
 .dropdown--menu {
   position: fixed;
-  top: 60px;
+  top: 70px;
   @include width-height(auto, auto);
-  background: $border--frame;
-  border-radius: 0px 0px 7px 0px;
+  @include bgColorBorderRadius($dark--42);
   filter: opacity(90%);
-  opacity: 1;
-
   @include anim(dropdown-anim, 0s, 5s, 1);
   padding: 0px;
   z-index: 20;
   aside {
     margin-top: 0px;
     @include width-height(300px, auto);
-    background-color: $menu--color;
+    background-color: $dark--font;
     ul {
       list-style: none;
-      margin: 0; 
-      padding: 0;
+      @include marginPad(margin, 0, padding, 0);
     }
   }
   aside {
     ul { 
       li {
         a {
-          display: block; 
-          line-height: 50px;
-          text-decoration: none;
-          font-size: 16px;
-          color: $white--smoke;
+          @include displayLineHeight(block, 50px);
+          @include textDecoFontSize(16px, $white--smoke);
           padding: 0px 20px;
           transition: background 0.5s;
           &:hover {
@@ -61,7 +54,7 @@
           li {
             a {
               font-size: 14px;
-              border-right: 10px solid $dark-font;
+              border-right: 10px solid $dark--font;
               padding: 0px 40px;
             }
           }

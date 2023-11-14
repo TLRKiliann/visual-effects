@@ -1,14 +1,17 @@
-@use './_colors' as *;
-
-@mixin opacity-bg($opacity, $bg-color) {
-    opacity: $opacity;
-    background-color: $bg-color;
-}
+@use 'src/_colors' as *;
   
 @mixin external-smile-anim($rotate, $translate) {
     opacity: 1;
     rotate: $rotate;
     transform: $translate;
+}
+
+@mixin hut-position($top-or-bottom, $left-or-right, $px) {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    #{$top-or-bottom}: 0px;
+    #{$left-or-right}: $px;
 }
 
 @mixin anim($name, $delay, $duration, $itercount) {
@@ -35,17 +38,32 @@
     height: $height;
 }
   
-@mixin display($display, $align, $content) {
+@mixin displayJustify($justify) {
+    display: flex;
+    justify-content: $justify;
+}
+
+@mixin displayMarginOrFlexDir($option, $params) {
+    display: flex;
+    #{$option}: $params;
+}
+
+@mixin marginPad($margin, $margin-params, $padding, $padding-params) {
+    #{$margin}: $margin-params;
+    #{$padding}: $padding-params;
+}
+
+@mixin colorMarginOrPadding($option, $params) {
+    color: $white--smoke;
+    #{$option}: $params;
+}
+
+@mixin displayAlignJust($display, $align, $content) {
     display: $display;
     align-items: $align;
     justify-content: $content;
 }
-  
-@mixin bg-shadow($bg-color, $shadow) {
-    background-color: $bg-color;
-    box-shadow: $shadow;
-}
-  
+ 
 @mixin position-abs-fix($abs-fix, $top, $right, $bottom, $left) {
     position: $abs-fix;
     top: $top;
@@ -53,18 +71,43 @@
     bottom: $bottom;
     left: $left;
 }
-  
-@mixin hut-position($top-or-bottom, $left-or-right, $px) {
-    position: absolute;
-    width: 40px;
-    height: 40px;
+
+@mixin absolute-top-or-bottom-rl($top-or-bottom, $height) {
+    position: fixed;
     #{$top-or-bottom}: 0px;
-    #{$left-or-right}: $px;
+    right: 0px;
+    left: 0px;
+    width: 100%;
+    height: $height;
+    background: linear-gradient(30deg, 
+      $dark--font 10%, $grey--cc 40%, $dark--font 70%); 
+    box-shadow: 0px 0px 4px $dark--42;
 }
-  
+
+@mixin displayLineHeight($display, $line) {
+    display: $display;
+    line-height: $line;
+}
+
 @mixin square-margin($margin-left-or-right) {
     margin-top: 14%;
     #{$margin-left-or-right}: 10%;
+}
+
+@mixin textAlignColor($color) {         
+    text-align: center;
+    color: $color;
+}
+
+@mixin textDecoFontSize($size, $color) {  
+    text-decoration: none;
+    font-size: $size;
+    color: $color;
+}
+
+@mixin fontWeightColor($color) {
+    font-weight: 600;
+    color: $color;   
 }
 
 @mixin bg--font() {
@@ -77,15 +120,47 @@
     background: $dark--16;
 } 
 
-  
-@mixin absolute-top-or-bottom-rl($top-or-bottom, $height) {
-    position: fixed;
-    #{$top-or-bottom}: 0px;
-    right: 0px;
-    left: 0px;
+@mixin bgColorBorderRadius($color) {
+    background-color: $color;
+    border-radius: 7px;
+}
+
+@mixin borderOutline() {
+    border: none;
+    outline: none;
+}
+
+@mixin bg-shadow($bg-color, $shadow) {
+    background-color: $bg-color;
+    box-shadow: $shadow;
+}
+
+@mixin opacity-bg($opacity, $bg-color) {
+    opacity: $opacity;
+    background-color: $bg-color;
+}
+
+@mixin imageParams($height) {
+    display: flex;
     width: 100%;
     height: $height;
-    background: linear-gradient(30deg, 
-      $dark-font 10%, $grey--cc 40%, $dark-font 70%); 
-    box-shadow: 0px 0px 4px $border--frame;
+    margin: auto;
+    opacity: 0.8;
+    object-fit: cover;
+}
+
+@mixin opacityTransform() {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+@mixin opacityBdRadius($opacity) {
+    opacity: $opacity;
+    border-radius: 50%;
+}
+
+@mixin OptionalOpacityZindex($option, $params, $opacity, $z-index) {
+    #{$option}: $params;
+    opacity: $opacity;
+    z-index: $z-index;
 }

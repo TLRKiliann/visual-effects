@@ -2,23 +2,21 @@
 @use 'src/colors' as *;
 
 .span--eyescircle {
-    @include display(flex, center, center);
+    @include displayAlignJust(flex, center, center);
     @include width-height(80px, 80px);
     margin: auto;
+    @include fontWeightColor($dark--16);
     font-size: 3rem;
-    font-weight: 400;
-    color: $dark--16;
     opacity: 0;
     @include anim(eyes-effect, 1s, 3s, 1);
   }
   .span--hut {
     position: absolute;
     display: flex;
-    background-color: $dark--24;
     @include width-height(80px, 80px);
-    opacity: 0;
+    @include opacity-bg(0, $dark--24);
+    z-index: 20;
     @include anim(eyes-hut, 2s, 3s, 1);
-    z-index: 20;      
     .span--eyeshut {
       background-color: $light--green;
     }

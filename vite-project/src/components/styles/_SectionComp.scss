@@ -4,38 +4,29 @@
 .section {
   display: flex;
   width: 500px;
-  background-color: $border--frame;
-  border-radius: 7px;
-  margin-top: 20px;
+  @include bgColorBorderRadius($dark--light--opacity);
   filter: opacity(90%);
-  padding: 10px;
+  @include marginPad(margin-top, 30px, padding, 20px); 
   article {
     width: 100%;
-    background-color: $dark-font;
-    border-radius: 7px;
-    color: $white--smoke;
-    padding: 0px 20px;
+    @include bgColorBorderRadius($dark--font);
+    box-shadow: 0px 0px 10px $grey--cc;
+    @include colorMarginOrPadding(padding, 0px 20px);
     h2 {
       font-size: 1.4rem;
     }
     .paragraph-menu {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      @include displayAlignJust(flex, center, space-between);
       height: 30px;
-      background-color: $submenu--color;
-      border-radius: 7px;
-      margin-bottom: 20px;
-      padding: 10px;
+      @include bgColorBorderRadius($submenu--color);
+      @include marginPad(margin-bottom, 20px, padding, 10px);       
       p {
         font-size: 1.0rem;
       }
       button {
-        background-color: $dark--24;
-        border-color: $border--frame;
-        border-radius: 7px;
-        font-weight: 600;
-        color: $white--smoke;
+        @include bgColorBorderRadius($dark--24);
+        border-color: $dark--42;
+        @include fontWeightColor($white--smoke);
         padding: 7px 30px;
       }
     }

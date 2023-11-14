@@ -1,4 +1,10 @@
+@use 'src/_mixin' as *;
+@use 'src/colors' as *;
+
 .boxone--inside {
+    @include bgColorBorderRadius($dark--font);
+    box-shadow: 0px 0px 10px $grey--cc;
+    @include marginPad(margin, 20px, padding, 20px 0px);     
     .boxone--title {
         .title--h4 {
             text-align: center;
@@ -10,53 +16,38 @@
 .box--name--data {
     padding: 0px 20px;
     p {
-        text-align: center;
-        color: #f5f5f5;
+        @include textAlignColor($white--smoke);
     }
 }
 .box--name--tochange {
-    display: flex;
-    flex-direction: column;
-    color: #f5f5f5;
-    padding: 0px 20px;
+    @include displayMarginOrFlexDir(flex-direction, column);
+    @include colorMarginOrPadding(padding, 0px 20px);
     .label--name {
-        padding-bottom: 10px;
+        @include marginPad(margin, 0px 40px, padding-bottom, 10px); 
     }
     .input--name {
-        background: rgba(255,255,255, 0.1);
-        border: none;
-        outline: none;
-        
-        font-size: 1.1rem;
-        color: #f5f5f5;
-
-        padding: 5px 7px;
+        @include bgColorBorderRadius($dark--42);
+        @include borderOutline();
+        @include textDecoFontSize(1.1rem, $white--smoke);
+        filter: opacity(90%);
+        @include marginPad(margin, 0px 40px, padding, 5px 7px); 
     }        
 } 
 .box--name--btn {
-    display: flex;
-    justify-content: center;
+    @include displayJustify(center);
     button {
-        font-weight: 600;
-        color: #333;
-
-        margin: 20px 0px;
-        padding: 5px 20px;
+        @include fontWeightColor(#333);
+        @include marginPad(margin, 20px 0px, padding, 5px 20px); 
     }
 }
 .box--name--showhide {
-    display: flex;
-    justify-content: center;
+    @include displayJustify(center);
     button {
-        font-weight: 600;
-        color: #333;
-
-        margin-bottom: 20px;
-        padding: 5px 20px;
+        @include fontWeightColor(#333);
+        @include marginPad(margin-bottom, 20px, padding, 5px 20px); 
     }
 }
 .register--p {
     margin: auto;
-    text-align: center;
-    color: orangered;
+    @include textAlignColor($orangered);
 }

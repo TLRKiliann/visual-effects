@@ -1,5 +1,5 @@
 @use 'src/_mixin' as *;
-@use 'src/_colors' as *;
+@use 'src/colors' as *;
 
 @keyframes body-overflow {
   0% {
@@ -13,12 +13,15 @@
 @keyframes front-bg {
   0% {
     @include opacity-bg(1, $dark--22);
+    z-index: 20;
   } 
   60% {
     @include opacity-bg(1, $dark--22);
+    z-index: 20;
   }
   100% {
     @include opacity-bg(0, $dark--22);
+    z-index: 20;
   }
 }
 @keyframes header-footer-bg {
@@ -38,12 +41,10 @@
     opacity: 1;
   }
   99% {
-    opacity: 1;
-    border-radius: 50%;
+    @include opacityBdRadius(1);
   }
   100% {
-    opacity: 0;
-    border-radius: 50%;
+    @include opacityBdRadius(0);
   }
 }
 
@@ -83,18 +84,13 @@
 
 @keyframes middle-smile {
   0% {
-    opacity: 1;
-    transform: translateY(0px);
+    @include opacityTransform();
   }
   50% {
-    opacity: 1;
-    rotate: 0deg;
-    transform: translateY(0px);
+    @include opacityTransform();
   }
   100% {
-    opacity: 1;
-    rotate: 0deg;
-    transform: translateY(0px);
+    @include opacityTransform();
   }
 }
 
@@ -111,31 +107,26 @@
 }
 
 body {
-  padding: 0;
-  margin: 0;
+  @include marginPad(margin, 0, padding, 0); 
   box-sizing: border-box;
   @include anim(body-overflow, 0s, 3s, 1);
   .back--color {
-    @include bg--font();
     max-height: 200%;
+    @include bg--font();
     filter: opacity(40%);
     z-index: -1;
   }
   .container {
     @include position-abs-fix(absolute, 0px, 0px, 0px, 0px);
-    background: $dark--16;
-    opacity: 0;
+    @include OptionalOpacityZindex(background-color, $dark--16, 0, 0);
     @include anim(front-bg, 0s, 4s, 1);
-    z-index: 10;
     .box {
-      display: flex;
-      justify-content: space-around;
+      @include displayJustify(space-around);
       height: 40%;
       .square {
         display: flex;
         @include width-height(80px, 80px);
-        background-color: $light--green;
-        border-radius: 3px;
+        @include bgColorBorderRadius($light--green);
         opacity: 0;
         @include anim(eyes-effect, 0s, 3s, 1);
       }
@@ -147,9 +138,8 @@ body {
       }
     }
     .smile {
-      @include display(flex, center, center);
-      font-size: 22rem;
-      color: $light--green;
+      @include displayAlignJust(flex, center, center);
+      @include textDecoFontSize(22rem, $light--green);
       @include width-height(100%, 300px);
       margin: auto;
       margin-top: 3%;
@@ -158,79 +148,50 @@ body {
   .span--img {
     @include position-abs-fix(fixed, 0px, 0px, 0px, 0px);
     filter: opacity(90%);
+    @include imageParams(100%);
     z-index: -2;
-    img {
-      @include width-height(100%, 100%);
-      margin: auto;
-      opacity: 0.8;
-      object-fit: cover;
-    }
   }
   header {
-    @include absolute-top-or-bottom-rl(top, 60px);
-    color: $white--smoke;
-    opacity: 1;
+    @include absolute-top-or-bottom-rl(top, 70px);
+    @include OptionalOpacityZindex(color, $white--smoke, 1, 15);
     @include anim(header-footer-bg, 0s, 5s, 1);
-    z-index: 15;
   }
   .main {
-    display: flex;
-    justify-content: space-between;
-
+    @include displayJustify(space-between);
     border: 1px solid fushia;
     &--dropdown {
-      width: 300px;
-      border: 1px solid cyan;
+      width: 350px;
     }
     &--container {
-      
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      /*border: 1px solid red;*/
-   
+      @include displayJustify(space-between);
       .box--one {
         position: relative;
         width: 30%;
-        margin: auto;
-
-    
-        background: rgba(0,0,0, 0.7);
-        border-radius: 7px;
-        color: #f5f5f5;
+        @include bgColorBorderRadius($dark--light--opacity);
+        filter: opacity(90%);
+        @include colorMarginOrPadding(margin, auto);        
         z-index: 10;
       }
     }
     &--sectionOne {
-      
-      width: 300px;
-      height: auto;
-
-      background: rgba(0,0,0, 0.7);
-      border: 1px solid sandybrown;
-      border-radius: 7px;
-      color: #f5f5f5;
-
-      padding: 20px;
+      @include width-height(300px, auto);
+      @include bgColorBorderRadius($dark--light--opacity);
+      @include colorMarginOrPadding(padding, 20px);
       .insidefirstdiv--box {
         margin: 10px;
-
-        border: 1px solid sandybrown;
       }
     }
     &--sectionTwo {
       padding: 60px 0px;
       padding-right: 40px;
       padding-bottom: 80px;
-
-      border: 1px solid red;
     }
   }
   footer {
     @include absolute-top-or-bottom-rl(bottom, 50px);
-    @include display(flex, center, center);
+    @include displayAlignJust(flex, center, center);
     @include anim(header-footer-footer-bg, 0s, 5s, 1);
-    color: $dark-font;
-    z-index: 15;
+    @include OptionalOpacityZindex(color, $dark--font, 1, 15);
   }
 }
